@@ -1,0 +1,5 @@
+Generated 18 logarithm enclosures, 8 rate enclosures, and four crossing rows.
+Generated 16 interior logarithm enclosures and six endpoint bounds.
+PASS: byte-identical NewtonData.lean; SHA-256 c9d0294dcdc8048667814af7164b4a292b92d9ff233523962166cd52877ea0e9.
+PASS: byte-identical SharpCertificates.lean; SHA-256 3a544e77d0a8aad8b89f739c651edf1597c9b4a3f99daa8d2b2d732e30b03e06.
+PASS: byte-identical InteriorCertificates.lean; SHA-256 07ead5a132b9899fdcdcd2ff5b23bccfd1c297650735726d841505bde09b0b7d.

@@ -1,0 +1,18 @@
+PASS: printed M=200 row Q=6, K=75, u=75; floor(1000R)=1850.
+PASS: Lean alternative with Q=7 also has R>5/4 at K=75.
+PASS: printed M=200 row Q=6, K=100, u=75; floor(1000R)=4288.
+PASS: Lean alternative with Q=7 also has R>5/4 at K=100.
+PASS: printed M=200 row Q=7, K=100, u=96; floor(1000R)=1288.
+PASS: printed M=200 row Q=7, K=150, u=96; floor(1000R)=1391.
+PASS: subsequence mean and the printed exact strict ratio chain.
+PASS: printed crossing row Q=6, delta=371979/1000000, using the article's own log rule.
+PASS: printed crossing row Q=7, delta=371979/500000, using the article's own log rule.
+PASS: printed crossing row Q=6, delta=18599/50000, using the article's own log rule.
+PASS: printed crossing row Q=7, delta=18599/25000, using the article's own log rule.
+PASS: both printed logarithmic bounds for C_*.
+PASS: printed interior endpoint row 1, with the article's log rule.
+PASS: printed interior endpoint row 2, with the article's log rule.
+PASS: printed interior endpoint row 3, with the article's log rule.
+PASS: printed interior endpoint row 4, with the article's log rule.
+PASS: printed interior endpoint row 5, with the article's log rule.
+PASS: printed interior endpoint row 6, with the article's log rule.

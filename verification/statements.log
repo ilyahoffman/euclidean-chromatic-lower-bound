@@ -1,0 +1,182 @@
+HoffmanChromatic.finite_six_real (n ell : ℕ) :
+  HoffmanChromatic.ChromaticLowerBound n
+    (↑((HoffmanChromatic.countA6 ^ n).coeff (2 * 2 ^ ell - 1)) /
+      ↑(HoffmanChromatic.weightedCount HoffmanChromatic.countE6 n (2 ^ ell - 1)))
+HoffmanChromatic.finite_seven_real (n ell : ℕ) :
+  HoffmanChromatic.ChromaticLowerBound n
+    (↑((HoffmanChromatic.countA7 ^ n).coeff (2 * 2 ^ ell - 1)) /
+      ↑(HoffmanChromatic.weightedCount HoffmanChromatic.countE7 n (2 ^ ell - 1)))
+HoffmanChromatic.finite_chromatic_inequality (Q : ℕ) (hQ : Q = 6 ∨ Q = 7) (L : ℤ) (n ell k : ℕ)
+  (hc : (HoffmanChromatic.unitDistanceGraph n).Colorable k) :
+  ((HoffmanChromatic.weightPolynomial fun j => HoffmanChromatic.letterWeight (HoffmanChromatic.intervalLetter L j)) ^
+          n).coeff
+      (2 * 2 ^ ell - 1) ≤
+    k * HoffmanChromatic.rankCount Q n (2 ^ ell - 1)
+HoffmanChromatic.coefficient_rank_transfer.{u_1, u_2, u_3, u_4} {K : Type u_1} [Field K] {m : Type u_2} {n : Type u_3}
+  {ι : Type u_4} [Fintype m] [Fintype n] [Fintype ι] (D : ℕ) (l : ι → ℕ) (u : ι → m → PowerSeries K)
+  (v : ι → n → PowerSeries K) :
+  (HoffmanChromatic.coefficientMatrix D fun a b => ∑ i, PowerSeries.X ^ l i * (u i a * v i b)).rank ≤ ∑ i, (D + 1 - l i)
+HoffmanChromatic.coordinate_factorization (Q : ℕ) (hQ : Q = 6 ∨ Q = 7) (L : ℤ) (i b : Fin Q) :
+  HoffmanChromatic.signedPower (-(HoffmanChromatic.intervalLetter L i * HoffmanChromatic.intervalLetter L b)) =
+    ∑ j,
+      PowerSeries.X ^ HoffmanChromatic.newtonExponent ↑j *
+        (HoffmanChromatic.coordinateU L j i * HoffmanChromatic.coordinateW L j b)
+HoffmanChromatic.rounded_chromatic : HoffmanChromatic.RoundedTarget
+HoffmanChromatic.subsequence_chromatic : HoffmanChromatic.SubsequenceTarget
+HoffmanChromatic.uniform_chromatic : HoffmanChromatic.UniformTarget
+HoffmanChromatic.rounded_euclidean_chromatic :
+  ∃ d₀, ∀ (d : ℕ), d₀ ≤ d → ∀ (k : ℕ), (HoffmanChromatic.unitDistanceGraph d).Colorable k → (13 / 10) ^ d ≤ ↑k
+HoffmanChromatic.subsequence_euclidean_chromatic (N : ℕ) :
+  ∃ d, N ≤ d ∧ ∀ (k : ℕ), (HoffmanChromatic.unitDistanceGraph d).Colorable k → (329 / 250) ^ d ≤ ↑k
+def HoffmanChromatic.UniformTarget : Prop :=
+∃ a,
+  HoffmanChromatic.Crossing a ∧
+    (∀ (b : ℝ), HoffmanChromatic.Crossing b → b = a) ∧
+      1309251 / 1000000 < Real.exp (HoffmanChromatic.delta6 a) ∧
+        Real.exp (HoffmanChromatic.delta6 a) < 1309252 / 1000000 ∧
+          ∃ c,
+            0 < c ∧
+              ∃ d₀,
+                ∀ (d : ℕ),
+                  d₀ ≤ d → HoffmanChromatic.ChromaticLowerBound d (c * Real.exp (HoffmanChromatic.delta6 a) ^ d)
+HoffmanChromatic.binomial_central_bounds (a A : ℝ) (ha : 0 < a) (hA : 0 ≤ A) :
+  ∃ c C,
+    0 < c ∧
+      0 < C ∧
+        ∃ N,
+          ∀ (n : ℕ),
+            N ≤ n →
+              ∀ (k : ℕ) (t : ℝ),
+                a ≤ t →
+                  t ≤ 1 - a →
+                    |↑k - ↑n * t| ≤ A * √↑n →
+                      c ≤ HoffmanChromatic.binomialMass n k t * √↑n ∧ HoffmanChromatic.binomialMass n k t * √↑n ≤ C
+HoffmanChromatic.binomial_uniform_upper (a : ℝ) (ha : 0 < a) :
+  ∃ C,
+    0 < C ∧ ∃ N, ∀ (n : ℕ), N ≤ n → ∀ (k : ℕ) (t : ℝ), a ≤ t → t ≤ 1 - a → HoffmanChromatic.binomialMass n k t * √↑n ≤ C
+HoffmanChromatic.uniform_coefficient_bounds.{u_1} {A : Type u_1} [Fintype A] (b : A → ℕ) (ε : ℝ) (hε : 0 < ε)
+  (hε1 : ε ≤ 1) :
+  ∃ c C,
+    0 < c ∧
+      0 < C ∧
+        ∃ n₀,
+          ∀ (n : ℕ),
+            n₀ ≤ n →
+              ∀ (x : ℝ),
+                ε ≤ x →
+                  x ≤ 1 →
+                    ∀ (m : ℕ),
+                      ↑((HoffmanChromatic.countPolynomial01 b ^ n).coeff m) * x ^ m * √↑n ≤
+                          C * HoffmanChromatic.partition01 b x ^ n ∧
+                        (|↑m - ↑n * HoffmanChromatic.mean01 b x| ≤ 1 →
+                          c * HoffmanChromatic.partition01 b x ^ n ≤
+                            ↑((HoffmanChromatic.countPolynomial01 b ^ n).coeff m) * x ^ m * √↑n)
+HoffmanChromatic.uniform_weighted_coefficient_bound.{u_1} {A : Type u_1} [Fintype A] (b : A → ℕ) (ε : ℝ) (hε : 0 < ε)
+  (hε1 : ε ≤ 1) :
+  ∃ C,
+    0 < C ∧
+      ∃ n₀,
+        ∀ (n : ℕ),
+          n₀ ≤ n →
+            ∀ (s : ℝ),
+              ε ≤ s →
+                s < 1 →
+                  ∀ (D : ℕ),
+                    ↑(HoffmanChromatic.weightedCount (HoffmanChromatic.countPolynomial01 b) n D) * s ^ D * √↑n ≤
+                      C * HoffmanChromatic.partition01 b s ^ n / (1 - s) ^ 2
+HoffmanChromatic.six_uniform_parameter_bound (ε : ℝ) (hε : 0 < ε) (hε1 : ε ≤ 1) :
+  ∃ q,
+    0 < q ∧
+      ∃ n₀,
+        ∀ (n : ℕ),
+          n₀ ≤ n →
+            ∀ (ell : ℕ) (t s : ℝ),
+              ε ≤ t →
+                t ≤ 1 →
+                  ε ≤ s →
+                    s < 1 →
+                      |↑(2 * 2 ^ ell - 1) - ↑n * HoffmanChromatic.mean01 HoffmanChromatic.tailA6 t| ≤ 1 →
+                        HoffmanChromatic.ChromaticLowerBound n
+                          (q * (1 - s) ^ 2 * (s ^ (2 ^ ell - 1) / t ^ (2 * 2 ^ ell - 1)) *
+                            (HoffmanChromatic.realA6 t / HoffmanChromatic.realE6 s) ^ n)
+HoffmanChromatic.seven_uniform_parameter_bound (ε : ℝ) (hε : 0 < ε) (hε1 : ε ≤ 1) :
+  ∃ q,
+    0 < q ∧
+      ∃ n₀,
+        ∀ (n : ℕ),
+          n₀ ≤ n →
+            ∀ (ell : ℕ) (t s : ℝ),
+              ε ≤ t →
+                t ≤ 1 →
+                  ε ≤ s →
+                    s < 1 →
+                      |↑(2 * 2 ^ ell - 1) - ↑n * HoffmanChromatic.mean01 HoffmanChromatic.tailA7 t| ≤ 1 →
+                        HoffmanChromatic.ChromaticLowerBound n
+                          (q * (1 - s) ^ 2 * (s ^ (2 ^ ell - 1) / t ^ (2 * 2 ^ ell - 1)) *
+                            (HoffmanChromatic.realA7 t / HoffmanChromatic.realE7 s) ^ n)
+HoffmanChromatic.six_uniform_rate :
+  ∃ c,
+    0 < c ∧
+      ∃ n₀,
+        ∀ (n : ℕ),
+          n₀ ≤ n →
+            ∀ (ell : ℕ),
+              37 / 100 ≤ ↑(2 ^ ell) / ↑n →
+                ↑(2 ^ ell) / ↑n ≤ 3 / 4 →
+                  HoffmanChromatic.ChromaticLowerBound n (c * Real.exp (↑n * HoffmanChromatic.delta6 (↑(2 ^ ell) / ↑n)))
+HoffmanChromatic.seven_uniform_rate :
+  ∃ c,
+    0 < c ∧
+      ∃ n₀,
+        ∀ (n : ℕ),
+          n₀ ≤ n →
+            ∀ (ell : ℕ),
+              37 / 100 ≤ ↑(2 ^ ell) / ↑n →
+                ↑(2 ^ ell) / ↑n ≤ 3 / 4 →
+                  HoffmanChromatic.ChromaticLowerBound n (c * Real.exp (↑n * HoffmanChromatic.delta7 (↑(2 ^ ell) / ↑n)))
+HoffmanChromatic.sharp_crossing :
+  ∃ a,
+    HoffmanChromatic.Crossing a ∧
+      (∀ (b : ℝ), HoffmanChromatic.Crossing b → b = a) ∧
+        1309251 / 1000000 < Real.exp (HoffmanChromatic.delta6 a) ∧
+          Real.exp (HoffmanChromatic.delta6 a) < 1309252 / 1000000 ∧ HoffmanChromatic.delta6 a < 27 / 100
+HoffmanChromatic.sharp_rate_cover (a : ℝ) (ha : HoffmanChromatic.Crossing a)
+  (hheight : HoffmanChromatic.delta6 a < 27 / 100) :
+  (∀ (δ : ℝ), a ≤ δ → δ ≤ 11 / 20 → HoffmanChromatic.delta6 a ≤ HoffmanChromatic.delta6 δ) ∧
+    ∀ (δ : ℝ), 11 / 20 ≤ δ → δ ≤ 2 * a → HoffmanChromatic.delta6 a ≤ HoffmanChromatic.delta7 δ
+HoffmanChromatic.Direct.direct_rounded :
+  ∃ d₀,
+    ∀ (d : ℕ),
+      d₀ ≤ d →
+        ∀ (k : ℕ) (f : EuclideanSpace ℝ (Fin d) → Fin k),
+          (∀ (x y : EuclideanSpace ℝ (Fin d)), dist x y = 1 → f x ≠ f y) → (13 / 10) ^ d ≤ ↑k
+HoffmanChromatic.Direct.direct_subsequence (N : ℕ) :
+  ∃ d,
+    N ≤ d ∧
+      ∀ (k : ℕ) (f : EuclideanSpace ℝ (Fin d) → Fin k),
+        (∀ (x y : EuclideanSpace ℝ (Fin d)), dist x y = 1 → f x ≠ f y) → (329 / 250) ^ d ≤ ↑k
+HoffmanChromatic.Direct.direct_uniform :
+  ∃ a,
+    371979 / 1000000 < a ∧
+      a < 371980 / 1000000 ∧
+        HoffmanChromatic.Direct.rate6 a = HoffmanChromatic.Direct.rate7 (2 * a) ∧
+          (∀ (b : ℝ),
+              371979 / 1000000 < b →
+                b < 371980 / 1000000 →
+                  HoffmanChromatic.Direct.rate6 b = HoffmanChromatic.Direct.rate7 (2 * b) → b = a) ∧
+            1309251 / 1000000 < Real.exp (HoffmanChromatic.Direct.rate6 a) ∧
+              Real.exp (HoffmanChromatic.Direct.rate6 a) < 1309252 / 1000000 ∧
+                ∃ c,
+                  0 < c ∧
+                    ∃ d₀,
+                      ∀ (d : ℕ),
+                        d₀ ≤ d →
+                          ∀ (k : ℕ) (f : EuclideanSpace ℝ (Fin d) → Fin k),
+                            (∀ (x y : EuclideanSpace ℝ (Fin d)), dist x y = 1 → f x ≠ f y) →
+                              c * Real.exp (HoffmanChromatic.Direct.rate6 a) ^ d ≤ ↑k
+HoffmanChromatic.minimum_detector_index_iff (P D : ℕ) (hP : 0 < P) :
+  HoffmanChromatic.HasBinomialDetector P D ↔ HoffmanChromatic.minimumDetectorIndex P ≤ D
+HoffmanChromatic.minimum_shifted_detector_index_iff (P D : ℕ) (hP : 0 < P) :
+  HoffmanChromatic.HasShiftedBinomialDetector P D ↔ HoffmanChromatic.minimumDetectorIndex P ≤ D
+def HoffmanChromatic.minimumDetectorIndex : ℕ → ℕ :=
+fun P => if ∃ ell, P = 2 ^ ell then P - 1 else 2 * P - 1

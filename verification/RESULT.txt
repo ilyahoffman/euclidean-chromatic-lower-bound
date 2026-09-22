@@ -1,0 +1,7 @@
+PASS: warning-free project build; 58 project modules imported and audited.
+PASS: 871 mathematical declarations and all transitive axiom dependencies.
+ALLOWED AXIOMS: propext, Classical.choice, Quot.sound.
+PROVED: RoundedTarget, SubsequenceTarget, UniformTarget, and direct colouring statements.
+PROVED: exact minimal detector index for every positive P, in both binomial bases.
+PASS: clean pinned dependencies, byte-identical witness regeneration, independent article arithmetic.
+Project build cache removed for this run: True.
