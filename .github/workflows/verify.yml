@@ -1,0 +1,27 @@
+name: Verify Lean proofs
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Check out the source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Install the pinned Lean toolchain
+        uses: leanprover/lean-action@50fcf42d2e460296f1a34b402e990d1b24f8b596
+        with:
+          auto-config: "false"
+          use-github-cache: "false"
+          use-mathlib-cache: "false"
+      - name: Fetch the locked dependency cache
+        run: python3 tools/fetch_cache.py
+      - name: Rebuild and verify all proofs
+        run: python3 tools/verify.py --clean
