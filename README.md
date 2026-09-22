@@ -21,7 +21,7 @@ Mathematical author: **Ilya Hoffman**
 Email: ilya.hoffman@gmail.com  
 ORCID: https://orcid.org/0009-0008-9083-2105
 
-TThis project formalizes the paper [A 1.30^d Lower Bound for the Chromatic Number of Euclidean Space](https://zenodo.org/records/22838037). The intended scope is
+This project formalizes the paper [A 1.30^d Lower Bound for the Chromatic Number of Euclidean Space](https://zenodo.org/records/22838037). The intended scope is
 the entire proof of those results, including the uniform constant-prefactor
 bound and the stronger bound on infinitely many dimensions. Version 1.1.0
 also proves the article's minimal-detector-index remark for every positive
