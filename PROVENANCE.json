@@ -1,0 +1,122 @@
+{
+  "project_status": "All three extended-abstract endpoints and the exact minimal-detector-index theorem in both bases",
+  "author": {
+    "name": "Ilya Hoffman",
+    "email": "ilya.hoffman@gmail.com",
+    "orcid": "https://orcid.org/0009-0008-9083-2105"
+  },
+  "lean_version": "4.19.0",
+  "lean_commit": "6caaee842e94",
+  "lake_version": "5.0.0-6caaee8",
+  "mathlib_commit": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+  "mathlib_worktree": "fresh checkout at the pinned commit; tracked and untracked source checks required by tools/verify.py",
+  "verification_date_utc": "2026-09-21",
+  "explicit_public_theorem_count": 304,
+  "audited_mathematical_declaration_count": 871,
+  "audited_theorem_count_including_generated_equations": 730,
+  "project_module_count": 58,
+  "axioms_allowed": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "sources": [
+    {
+      "path": "reference/figures/draw_certified_cover.py",
+      "sha256": "084573df22b1e86df0004b64cd7f85cf80a4b7c7f94fd51106524bdfa07da5db"
+    },
+    {
+      "path": "reference/figures/hoffman-certified-cover.pdf",
+      "sha256": "521060d0bd304171a72b68d9b23a1ba5681cce1f426435176af28d70d7eac115"
+    },
+    {
+      "path": "reference/figures/hoffman-certified-cover.png",
+      "sha256": "b457e8e663d2767d7a4ce601392d7ba614936951afea294c4c18202eb88aeecb"
+    },
+    {
+      "path": "reference/figures/hoffman-certified-cover.svg",
+      "sha256": "97914fdb92c6b23075ba1e2b7d19234bf4c34654d65582ef526ad366fffb7fa1"
+    },
+    {
+      "path": "reference/hoffman-chromatic-extended-abstract-en.pdf",
+      "sha256": "97d015f0664b17dd6c9a3058bc70873930c73942d8bc45d033ca888a369ce53b"
+    },
+    {
+      "path": "reference/hoffman-chromatic-extended-abstract-en.tex",
+      "sha256": "4f58916f88fe22ba8f9c41c8b93eab11abc1b9c8f8a1c3a98b0cdf594ebb6761"
+    },
+    {
+      "path": "reference/hoffman-chromatic-spherical-proof-en.pdf",
+      "sha256": "bd79a652b66ba8894a00d4d91bcf97cb0d5d53b571260eebd305b27ef7b776ce"
+    },
+    {
+      "path": "reference/hoffman-chromatic-spherical-proof-en.tex",
+      "sha256": "c8976111e38270adebaad00a9d07880437dc72de9b5704c8a7abf0c01f81faf1"
+    }
+  ],
+  "original_archives": [
+    {
+      "filename": "HOFFMAN_CHROMATIC_EXTENDED_ABSTRACT_EN_20260916.zip",
+      "sha256": "3eaaf6e5a5b572068fc18b448b928590a62ec29418a6f5658ccf5fc2413b8988"
+    },
+    {
+      "filename": "HOFFMAN_CHROMATIC_SPHERICAL_PROOF_EN_20260915.zip",
+      "sha256": "87920d5e31c4e1fdde976f1af5a3e79818336198e5740b32d5517e180cb6bdfe"
+    }
+  ],
+  "proved_endpoints": {
+    "RoundedTarget": "HoffmanChromatic.rounded_chromatic",
+    "SubsequenceTarget": "HoffmanChromatic.subsequence_chromatic",
+    "UniformTarget": "HoffmanChromatic.uniform_chromatic"
+  },
+  "open_endpoints": [],
+  "formalization_version": "1.1.0",
+  "additional_verified_analysis": [
+    "Bernoulli divergence lower and upper estimates",
+    "Uniform Stirling error for binomial masses",
+    "Uniform central-window bounds with inverse-square-root scaling",
+    "Unrestricted binomial upper bound via a mode",
+    "Exact finite product moments and Chebyshev estimates",
+    "Exact conditioning identity for polynomial coefficients",
+    "Uniform upper and lower binomial-mixture bounds",
+    "Uniform inverse-square-root polynomial coefficient bounds",
+    "Weighted coefficient summation and square-root cancellation",
+    "Uniform parameter bounds for both Euclidean graph families",
+    "Positive-variance derivative and unique attained saddle points",
+    "Nonempty bounded infima, concavity and continuity of the rates",
+    "Uniform chromatic rate bounds with a constant prefactor",
+    "Rational logarithm remainder and all ten sharp certificate rows",
+    "Existence and bracketed uniqueness of the sharp crossing",
+    "Four-interval cover and all-dimensional sharp endpoint",
+    "Binary Pascal inversion and a uniform Lucas parity criterion",
+    "Exact minimal detector index for every positive period in both binomial bases",
+    "Direct statements for arbitrary Euclidean colouring functions"
+  ],
+  "full_formalization_verified": true,
+  "verification_scope": "All three extended-abstract results and complete proof dependencies, plus the minimal-detector-index remark for every positive period",
+  "separate_material_not_formalized": [
+    "General-Q valuation theorem; replaced by exact Q=6,7 factorizations",
+    "Explicit numerical values of the constant prefactor and dimension threshold",
+    "Eleven-decimal numerical enclosure; the formal enclosure is 1.309251 < C_* < 1.309252"
+  ],
+  "ci_workflow": {
+    "path": ".github/workflows/verify.yml",
+    "remote_run_performed": false,
+    "checkout_commit": "11d5960a326750d5838078e36cf38b85af677262",
+    "lean_action_commit": "50fcf42d2e460296f1a34b402e990d1b24f8b596"
+  },
+  "local_release_verification": {
+    "result": "PASS",
+    "platform": "x86_64-unknown-linux-gnu",
+    "project_build_cache_reused": false,
+    "all_nine_dependency_repositories_fetched_afresh": true,
+    "official_dependency_cache_files_fetched_into_empty_directory": 2399,
+    "dependency_cache_reused_from_previous_project": false,
+    "project_modules_built_and_audited": 58,
+    "warnings": 0,
+    "witness_regeneration": "byte-identical for all three generated files",
+    "independent_article_arithmetic": "PASS",
+    "report": "RELEASE_VERIFICATION.md",
+    "logs": "verification/"
+  }
+}
